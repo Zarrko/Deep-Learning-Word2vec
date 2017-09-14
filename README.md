@@ -2,12 +2,12 @@
 Using Vector Averaging and Clustering to extract feature sets needed to train classifiers to predict whether
 a sentence has an appointment or not.
 
-##Dataset
+## Dataset
 Kenyan Government Appointments since 1963.
 
-##Running the code
+## Running the code
 1. Install requirements.txt
 2. Run clustering.py
 
-##Acknowledgement
+## Acknowledgement
 * Kaggle Deep Learning Tutorial

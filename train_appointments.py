@@ -76,6 +76,27 @@ for appointment in test:
 
 testDataVecs = getAvgFeatureVec(clean_test_appointments, model, num_features)
 
+# Fit a random forest to the training data, using 100 trees
+from sklearn.ensemble import RandomForestClassifier
+forest = RandomForestClassifier( n_estimators = 100 )
+
+from sklearn.preprocessing import Imputer
+trainDataVecs = Imputer().fit_transform(trainDataVecs)
+
+print ("Fitting a random forest to labeled training data...")
+forest.fit( trainDataVecs, train["Appointment"] )
+
+# testDataVecs = Imputer().fit(testDataVecs)
+# Test & extract results
+result = forest.predict( testDataVecs )
+
+accuracy = accuracy_score(test["Appointment"], result)
+print(accuracy)
+
+# Write the test results
+output = pd.DataFrame( data={"Actual":test["Appointment"], "Predicted":result, "text":test["Body"]} )
+output.to_csv( "Word2Vec_AverageVectors.csv", index=False )
+
 
 
 
